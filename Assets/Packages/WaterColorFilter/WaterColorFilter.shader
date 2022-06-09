@@ -1,4 +1,6 @@
-﻿Shader "Hidden/WaterColorFilter" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Hidden/WaterColorFilter" {
 	Properties {
 		_MainTex ("Texture", 2D) = "white" {}
 		_WobbTex ("Wobbing", 2D) = "grey" {}
@@ -34,7 +36,7 @@
 
 			v2f vert(appdata v) {
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv_Main = v.uv;
 				return o;
 			}
@@ -60,7 +62,7 @@
 				float aspect = _ScreenParams.x / _ScreenParams.y;
 
 				v2f_wobb o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv_Main = v.uv;
 				o.uv_Wobb = v.uv * float2(aspect, 1) * _WobbScale;
 				return o;
@@ -119,7 +121,7 @@
 				float aspect = _ScreenParams.x / _ScreenParams.y;
 
 				v2f_paper o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv_Main = v.uv;
 				o.uv_Paper = v.uv * float2(aspect, 1) * _PaperScale;
 				return o;

@@ -1,4 +1,6 @@
-﻿Shader "Hidden/ToneFilter" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Hidden/ToneFilter" {
 	Properties {
 		_MainTex ("Texture", 2D) = "white" {}
 		_ColorWarm ("Warm Color", Color) = (1, 1, 0.5, 1)
@@ -36,11 +38,12 @@
 
 			v2f vert (appdata v) {
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv_Main = v.uv;
 				o.uv_Depth = v.uv;
 				#ifdef UNITY_UV_STARTS_AT_TOP
-				o.uv_Depth.y = 1 - o.uv_Depth.y;
+				if (_CameraDepthNormalsTexture_TexelSize.y < 0)
+					o.uv_Depth.y = 1 - o.uv_Depth.y;
 				#endif
 				return o;
 			}
@@ -48,6 +51,7 @@
 				float depth;
 				float3 normal;
 				DecodeDepthNormal(tex2D(_CameraDepthNormalsTexture, i.uv_Depth), depth, normal);
+				//normal = normalize(normal);
 
 				float4 src = tex2D(_MainTex, i.uv_Main);
 
