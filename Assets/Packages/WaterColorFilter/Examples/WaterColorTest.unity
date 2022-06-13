@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filter: {fileID: 4800000, guid: f1888f1fec91d4b45820b42c34802943, type: 3}
-  warm: {r: 0.834, g: 0.8054969, b: 0.695556, a: 1}
+  warm: {r: 0.8352941, g: 0.78926015, b: 0.62814116, a: 1}
   cool: {r: 0.40794852, g: 0.73202544, b: 0.8014706, a: 1}
   tonePower: 1.1
   dirLight: {fileID: 915563461}

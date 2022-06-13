@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Hidden/ToneFilter" {
+﻿Shader "Hidden/Toon_Toon" {
 	Properties {
 		_MainTex ("Texture", 2D) = "white" {}
 		_ColorWarm ("Warm Color", Color) = (1, 1, 0.5, 1)
