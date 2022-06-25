@@ -1,5 +1,7 @@
 ﻿Shader "Hidden/Toon_Edge" {
 	Properties {
+		_MainTex("Texture", 2D) = "white" {}
+
 		_EdgeSize ("Edge Size", Float) = 1
 		_EdgePower ("Edge Power", Float) = 3
 	}

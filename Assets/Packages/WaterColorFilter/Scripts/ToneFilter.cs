@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace WaterColorFilterSystem {
 
-	[ExecuteInEditMode]
+	[ExecuteAlways]
 	[RequireComponent(typeof(Camera))]
 	public class ToneFilter : MonoBehaviour {
 		public const string PROP_COLOR_WARM = "_ColorWarm";

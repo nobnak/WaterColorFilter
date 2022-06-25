@@ -1,5 +1,7 @@
 ﻿Shader "Hidden/Toon_Paper" {
 	Properties {
+		_MainTex("Texture", 2D) = "white" {}
+
 		_PaperTex ("Paper", 2D) = "grey" {}
 		_PaperScale ("Paper Scale", Float) = 1
 		_PaperPower ("Paper Power", Float) = 1

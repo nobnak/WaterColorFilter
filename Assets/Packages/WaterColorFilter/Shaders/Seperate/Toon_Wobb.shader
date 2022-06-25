@@ -1,5 +1,7 @@
 ﻿Shader "Hidden/Toon_Wobb" {
 	Properties {
+		_MainTex("Texture", 2D) = "white" {}
+
 		_WobbTex ("Wobbing", 2D) = "grey" {}
 		_WobbScale ("Wob Tex Scale", Float) = 1
 		_WobbPower ("Wobbing Power", Float) = 0.005
