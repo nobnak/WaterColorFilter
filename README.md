@@ -1,8 +1,9 @@
 # WaterColorFilter for Unity
 
-[Unity Package](WaterColorFilter.unitypackage)
+//[Unity Package](WaterColorFilter.unitypackage)
 
-[![Thumbnail](Thumbnail600.jpg)](https://vimeo.com/152248671)
+[![Thumbnail](http://img.youtube.com/vi/fSLWlCdzR9E/hqdefault.jpg)](https://youtube.com/shorts/fSLWlCdzR9E?feature=share)
+[![Thumbnail](http://img.youtube.com/vi/9nbwnSKI_5I/hqdefault.jpg)](https://youtube.com/shorts/9nbwnSKI_5I?feature=share)
 
 ## Features
  - Tone-based Diffuse Shading
