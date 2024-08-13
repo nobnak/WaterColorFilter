@@ -1,0 +1,12 @@
+{
+  "author": {
+    "name": "Nakata Nobuyuki",
+    "email": "nobu.nakata@gmail.com"
+  },
+  "name": "jp.nobnak.water_color_filter",
+  "displayName": "Water color filter",
+  "version": "1.0.0",
+  "dependencies": {
+    "com.unity.mathematics": "1.2.6"
+  }
+}
