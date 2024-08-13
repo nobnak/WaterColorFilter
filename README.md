@@ -1,4 +1,4 @@
-# WaterColorFilter for Unity
+# Water-color filter for Unity
 
 //[Unity Package](WaterColorFilter.unitypackage)
 
@@ -10,6 +10,14 @@
  - Wobbing
  - Edge Darkening
  - Paper Effect
+
+## Installation
+Add scoped repository:
+
+- URL: https://package.openupm.com
+- Scope: jp.nobnak
+
+Install "Water color filter" on Package Manager.
 
 ## References
  1. Bousseau, A., & Kaplan, M. (2006). Interactive watercolor rendering with temporal coherence and abstraction. International Symposium on Non-Photorealistic Animation and Rendering (NPAR), 141. doi:10.1145/1124728.1124751
