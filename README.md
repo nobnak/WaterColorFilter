@@ -1,7 +1,5 @@
 # Water-color filter for Unity
 
-//[Unity Package](WaterColorFilter.unitypackage)
-
 [![Thumbnail](http://img.youtube.com/vi/fSLWlCdzR9E/hqdefault.jpg)](https://youtube.com/shorts/fSLWlCdzR9E?feature=share)
 [![Thumbnail](http://img.youtube.com/vi/9nbwnSKI_5I/hqdefault.jpg)](https://youtube.com/shorts/9nbwnSKI_5I?feature=share)
 
