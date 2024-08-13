@@ -1,24 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Profiling;
 
 namespace WaterColorFilterSystem {
 
+    [ExecuteAlways]
     [RequireComponent(typeof(Camera))]
     public class Toon : MonoBehaviour {
 
         [SerializeField]
-        protected Config currConfig;
+        protected Events events = new();
+        [SerializeField]
+        protected Assets assets = new();
+        [SerializeField]
+        protected Config currConfig = new();
 
         protected Material mat;
         protected Camera cam;
 
-        public Config CurrConfig { get => currConfig; set => currConfig = value; }
+        public Config CurrConfig  => currConfig;
+        public Events CurrEvents => events;
 
         #region unity
         private void OnEnable() {
-            mat = new Material(Shader.Find("Toon"));
+            mat = new Material(Resources.Load<Shader>("Toon"));
 
             cam = GetComponent<Camera>();
             cam.depthTextureMode |= DepthTextureMode.DepthNormals;
@@ -30,13 +37,23 @@ namespace WaterColorFilterSystem {
                 mat = null;
             }
         }
+        private void OnPreRender() {
+            if (assets.light != null) {
+                currConfig.toon_lightDir = cam.transform.InverseTransformDirection(assets.light.forward); 
+            }
+
+            events.onPreRender?.Invoke(this);
+        }
+        private void OnPostRender() {
+            events.onPostRender?.Invoke(this);
+        }
         private void OnRenderImage(RenderTexture source, RenderTexture destination) {
             Profiler.BeginSample($"{nameof(Toon)}");
 
             var tmp0 = RenderTexture.GetTemporary(source.width, source.height, 0, source.format);
             var tmp1 = RenderTexture.GetTemporary(source.width, source.height, 0, source.format);
             try {
-                var lightDir = currConfig.toon_lightDir.normalized;
+                var lightDir = currConfig.toon_lightDir;
                 var light_power = new Vector4(lightDir.x, lightDir.y, lightDir.z, currConfig.tone_power);
                 mat.SetColor(P_TOON_WARM, currConfig.toon_warm);
                 mat.SetColor(P_TOON_COOL, currConfig.toon_cool);
@@ -52,15 +69,22 @@ namespace WaterColorFilterSystem {
 
                 var wobb_scale = currConfig.wobb_scale;
                 var wobb_power = new Vector4(wobb_scale, wobb_scale, currConfig.wobb_power, 1);
-                mat.SetTexture(P_WOBB_TEX, CurrAsset.wobb_tex);
+                mat.SetTexture(P_WOBB_TEX, currConfig.wobb_tex);
                 mat.SetVector(P_WOBB_SCALE_POWER, wobb_power);
                 Graphics.Blit(tmp0, tmp1, mat, (int)Pass.Wobb);
 
-                var paper_scale = currConfig.paper_scale;
-                var paper_power = new Vector4(paper_scale, paper_scale, currConfig.paper_power, 1);
-                mat.SetTexture(P_PAPER_TEX, CurrAsset.paper_tex);
-                mat.SetVector(P_PAPER_SCALE_POWER, paper_power);
-                Graphics.Blit(tmp1, destination, mat, (int)Pass.Paper);
+                var papers = currConfig.paper_configs;
+                for (var i = 0; i < papers.Count; i++) {
+                    var paper = papers[i];
+                    var paper_scale = paper.paper_scale;
+                    var paper_power = new Vector4(paper_scale, paper_scale, paper.paper_power, 1);
+                    mat.SetTexture(P_PAPER_TEX, paper.paper_tex);
+                    mat.SetVector(P_PAPER_SCALE_POWER, paper_power);
+                    Graphics.Blit(tmp0, tmp1, mat, (int)Pass.Paper);
+                    Swap(ref tmp0, ref tmp1);
+                }
+
+                Graphics.Blit(tmp0, destination);
             } finally {
                 RenderTexture.ReleaseTemporary(tmp0);
                 RenderTexture.ReleaseTemporary(tmp1);
@@ -85,24 +109,41 @@ namespace WaterColorFilterSystem {
             Wobb,
             Paper,
         }
+        [System.Serializable]
+        public class Events {
 
+            public ToonEvent onPreRender = new();
+            public ToonEvent onPostRender = new();
+
+            [System.Serializable]
+            public class ToonEvent : UnityEvent<Toon> { }
+        }
+        [System.Serializable]
+        public class Assets {
+            public Transform light;
+        }
         [System.Serializable]
         public class Config {
-            public Color toon_warm;
-			public Color toon_cool;
-			public float tone_power;
-			public Vector3 toon_lightDir;
+            public Color toon_warm = new Color(0.835f, 0.789f, 0.628f, 1f);
+            public Color toon_cool = new Color(0.408f, 0.732f, 0.801f, 1f);
+            public float tone_power = 1.1f;
+            public Vector3 toon_lightDir = Vector3.forward;
 
-            public float edge_size;
-            public float edge_power;
+            public float edge_size = 1f;
+            public float edge_power = 3f;
 
             public Texture2D wobb_tex;
-            public float wobb_scale;
-            public float wobb_power;
+            public float wobb_scale = 1f;
+            public float wobb_power = 0.005f;
 
-            public Texture2D paper_tex;
-            public float paper_scale;
-            public float paper_power;
+            public List<PaperConfig> paper_configs = new List<PaperConfig>();
+
+            [System.Serializable]
+            public class PaperConfig {
+                public Texture2D paper_tex;
+                public float paper_scale = 1f;
+                public float paper_power = 1f;
+            }
         }
 
         // Toon
