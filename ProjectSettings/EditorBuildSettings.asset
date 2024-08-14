@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Preloader.unity
+  - enabled: 0
+    path: Assets/Scenes/UnityLabs01.unity
+  - enabled: 1
+    path: Assets/Scenes/TheLabs.unity

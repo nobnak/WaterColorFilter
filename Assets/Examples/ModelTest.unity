@@ -713,18 +713,18 @@ MonoBehaviour:
       x: 0.3221105
       y: 0.39346066
       z: 0.8610653
-    edge_size: 1
-    edge_power: 5
+    edge_size: 2
+    edge_power: 3
     wobb_tex: {fileID: 2800000, guid: 8be85bd2bfb6f4047a837ae6d1ba9465, type: 3}
     wobb_scale: 1
     wobb_power: 3
     paper_configs:
     - paper_tex: {fileID: 2800000, guid: cb969bf9a5efd694daf116123a09a2d9, type: 3}
-      paper_scale: 3
+      paper_scale: 1
       paper_power: 1
     - paper_tex: {fileID: 2800000, guid: 1a8c42f962b5c2f49a2950aa6d2c5452, type: 3}
       paper_scale: 1
-      paper_power: 2
+      paper_power: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
