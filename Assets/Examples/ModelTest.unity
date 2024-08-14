@@ -706,25 +706,25 @@ MonoBehaviour:
   assets:
     light: {fileID: 915563461}
   currConfig:
-    toon_warm: {r: 0.8352941, g: 0.78926015, b: 0.62814116, a: 1}
-    toon_cool: {r: 0, g: 0.42329994, b: 0.51, a: 1}
-    toon_power: 1.1
+    toon_warm: {r: 0.65300006, g: 0.6074533, b: 0.47081307, a: 1}
+    toon_cool: {r: 0, g: 0.30572394, b: 0.682, a: 1}
+    toon_power: 1.5
     toon_lightDir:
       x: 0.3221105
       y: 0.39346066
       z: 0.8610653
-    edge_size: 2
-    edge_power: 3
+    edge_size: 3
+    edge_power: 5
     wobb_tex: {fileID: 2800000, guid: 8be85bd2bfb6f4047a837ae6d1ba9465, type: 3}
-    wobb_scale: 1
-    wobb_power: 3
+    wobb_scale: 2
+    wobb_power: 5
     paper_configs:
     - paper_tex: {fileID: 2800000, guid: cb969bf9a5efd694daf116123a09a2d9, type: 3}
-      paper_scale: 1
+      paper_scale: 0.5
       paper_power: 1
     - paper_tex: {fileID: 2800000, guid: 1a8c42f962b5c2f49a2950aa6d2c5452, type: 3}
-      paper_scale: 1
-      paper_power: 1
+      paper_scale: 1.5
+      paper_power: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
