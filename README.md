@@ -1,6 +1,6 @@
 # Water-color filter for Unity
-[![Thumbnail](http://img.youtube.com/vi/7eo3udsdT9s/mqdefault.jpg)](https://youtube.com/shorts/7eo3udsdT9s?feature=share)
-[![Thumbnail](http://img.youtube.com/vi/9nbwnSKI_5I/mqdefault.jpg)](https://youtube.com/shorts/9nbwnSKI_5I?feature=share)
+[![Thumbnail](Images/Thumbnail01.png)](https://youtube.com/shorts/7eo3udsdT9s?feature=share)
+[![Thumbnail](Images/Thumbnail02.png)](https://youtube.com/shorts/Fmr0TWbR7l4?feature=share)
 
 ## Features
  - Tone-based Diffuse Shading
